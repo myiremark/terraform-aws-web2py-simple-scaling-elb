@@ -44,7 +44,9 @@ docker run --name=terraform_aws_webpy -it myiremark/terraform_aws_web2py:latest
 aws configure
 ```
 
-it will prompt for your AWS access key id and secret key id 
+it will prompt for your AWS access key id and secret key id.  they are stored in ~/.aws/credentials.
+
+don't enter anything for default region name or output format
 
 ```
 cd /terraform-aws-web2py-simple-scaling-elb/cloud/src/cloud;
