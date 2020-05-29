@@ -18,8 +18,6 @@ Separate directories/states for:
 
 ## CLOUD
 
-# cloud
-
 git clone git@github.com:myiremark/terraform-aws-web2py-simple-scaling-elb.git;
 
 cd terraform-aws-web2py-simple-scaling-elb/cloud;
