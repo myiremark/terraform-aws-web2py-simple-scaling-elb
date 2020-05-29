@@ -77,3 +77,9 @@ variable "asg_max_size" {
   default     = 20
 }
 
+variable "app_ready_check_path" {
+  type        = string
+  description = "path to determine ec2 instance health"
+  default     = "/welcome/default/date_time"
+}
+
