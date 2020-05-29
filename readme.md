@@ -33,7 +33,9 @@ git clone git@github.com:myiremark/terraform-aws-web2py-simple-scaling-elb.git;
 
 cd terraform-aws-web2py-simple-scaling-elb/cloud;
 
-docker build -t myiremark/terraform_aws_web2py:latest .
+docker build -t myiremark/terraform_aws_web2py:latest .  --no-cache
+
+# notice the --no-cache above! we're using git in the docker file.
 
 docker run --name=terraform_aws_webpy -it myiremark/terraform_aws_web2py:latest
 ```
