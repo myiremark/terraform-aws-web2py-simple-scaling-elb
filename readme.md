@@ -17,6 +17,11 @@ Separate directories/states for:
   - template instance
 - elb resources
 
+In order to create the database table structure, this project leverages web2py's automigrations.  This requires us to set up a separate VM which is stateful 
+and should only be created/destroyed when changing the db schema, or else the migration files will be inconsistent and require manual intervention.
+
+Long story short: create the migration instance once and access the endpoint to register the migration (yielding a successful response).  Then leave that machine alone.
+
 # BUILD
 
 ## CLOUD
