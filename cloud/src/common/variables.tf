@@ -53,3 +53,20 @@ variable "db_max_connections" {
   default = 300
 }
 
+variable "deployed_ami_base_image" {
+  type        = string
+  description = "official ubuntu 18 image"
+  default     = "ami-05801d0a3c8e4c443"
+}
+
+variable "deployed_instance_type" {
+  type        = string
+  description = "type of instances to deploy for migration instance, template instance and target group instances"
+  default     = "t2.micro"
+}
+
+variable "ssh_pub_key" {
+  type        = string
+  description = "pub key to be added to instances"
+  default = ""
+}
