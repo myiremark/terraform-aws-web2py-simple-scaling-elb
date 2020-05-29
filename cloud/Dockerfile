@@ -18,5 +18,7 @@ RUN unzip awscli-exe-linux-x86_64.zip
 
 RUN ./aws/install
 
-#RUN git clone git@github.com:myiremark/terraform-aws-web2py-simple-scaling-elb.git;
+RUN ssh-keygen -t ecdsa -f /root/.ssh/id_ecdsa -q -P "" 0>&-
+
+RUN git clone https://github.com/myiremark/terraform-aws-web2py-simple-scaling-elb.git
 
