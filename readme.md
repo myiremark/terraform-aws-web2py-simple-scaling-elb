@@ -47,12 +47,28 @@ aws configure
 it will prompt for your AWS access key id and secret key id 
 
 ```
-cd /terraform-aws-web2py-simple-scaling-elb/cloud/src/;
+cd /terraform-aws-web2py-simple-scaling-elb/cloud/src/cloud;
 terraform init;
 terraform apply;
+
+cd /terraform-aws-web2py-simple-scaling-elb/cloud/src/ec2/migration_instance;
+terraform init;
+terraform apply;
+
+# wait for output of above command and for instance to be healthy.  Hit that endpoint and trigger the migration.  You will get a successful date and time response.  Then you know the db has been migrated successfully.
+
+cd /terraform-aws-web2py-simple-scaling-elb/cloud/src/ec2/template_instance;
+terraform init;
+terraform apply;
+
+# wait for output of above command and for instance to be healthy.  Hit that endpoint.  You will get a successful date and time response.  Then you know that the template instance is fully ready for cloning.  The instance must be signaled externally ready as the logic in the elb module images the vm at the time its run whether or not the template instance has fully booted.
+
+cd /terraform-aws-web2py-simple-scaling-elb/cloud/src/elb;
+terraform init;
+terraform apply;
+
+# enjoy ;)
 ```
-
-
 
 ## Loadtesting Container
 
