@@ -11,8 +11,11 @@ Separate docker files for:
 - load testing container
 
 Separate directories/states for:
-- migration instance
-- template instance
+- cloud resources (vpc, db, security groups)
+- ec2 instances:
+  - migration instance
+  - template instance
+- elb resources
 
 # BUILD
 
