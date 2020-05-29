@@ -52,6 +52,8 @@ terraform init;
 terraform apply;
 ```
 
+
+
 ## Loadtesting Container
 
 ```
@@ -62,6 +64,7 @@ docker build -t myiremark/terraform_aws_web2py_loadtest:latest .
 docker run --name=terraform_aws_webpy_loadtest -it myiremark/terraform_aws_web2py_loadtest:latest
 ```
 
+### Inside the "terraform_aws_web2py_loadtest" container"
 
 ```
 LB_URL=OUTPUT_FROM_ABOVE_APPLY_IN_ELB_DIR;
