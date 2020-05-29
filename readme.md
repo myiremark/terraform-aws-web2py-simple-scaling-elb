@@ -52,7 +52,16 @@ terraform init;
 terraform apply;
 ```
 
-# Testing
+## Loadtesting Container
+
+```
+cd terraform-aws-web2py-simple-scaling-elb/loadtest;
+
+docker build -t myiremark/terraform_aws_web2py_loadtest:latest .
+
+docker run --name=terraform_aws_webpy_loadtest -it myiremark/terraform_aws_web2py_loadtest:latest
+```
+
 
 ```
 LB_URL=OUTPUT_FROM_ABOVE_APPLY_IN_ELB_DIR;
