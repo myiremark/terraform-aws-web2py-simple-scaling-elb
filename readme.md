@@ -18,6 +18,8 @@ Separate directories/states for:
 
 ## CLOUD
 
+### Outside the "terraform_aws_web2py" container"
+
 ```
 git clone git@github.com:myiremark/terraform-aws-web2py-simple-scaling-elb.git;
 
@@ -25,5 +27,8 @@ cd terraform-aws-web2py-simple-scaling-elb/cloud;
 
 docker build -t myiremark/terraform_aws_web2py:latest .
 
-docker run -it myiremark/terraform_aws_web2py:latest /bin/bash --name=terraform_aws_webpy
+docker run --name=terraform_aws_webpy -it myiremark/terraform_aws_web2py:latest
 ```
+
+### Inside the "terraform_aws_web2py" container"
+
