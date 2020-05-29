@@ -70,3 +70,10 @@ variable "ssh_pub_key" {
   description = "pub key to be added to instances"
   default = ""
 }
+
+variable "asg_max_size" {
+  type        = number
+  description = "max number of vms in asg"
+  default     = 20
+}
+
