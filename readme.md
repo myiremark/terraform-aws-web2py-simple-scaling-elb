@@ -73,3 +73,16 @@ ab -n 100000 -c 1000 $LB_URL/$TESTING_ENDPOINT; # peak load testing
 
 ```
 
+
+# RESULTS
+
+burst capacity:
+- < 400 ms mean response time @ 3000 requests/sec
+- < 100 ms mean response time @ 1000 requests/sec
+- < 1% non 200 response rate
+
+sustained capacity:
+- > 100 requests/sec
+- < 400 ms response time (~200)
+- < 1% non 200 response rate (0 @ 100 reqs/sec)
+
