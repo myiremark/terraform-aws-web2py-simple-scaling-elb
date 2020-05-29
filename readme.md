@@ -98,3 +98,10 @@ sustained capacity:
 - < 400 ms response time (~200)
 - < 1% non 200 response rate (0 @ 100 reqs/sec)
 
+# Safe Teardown
+
+terraform destroy in this order:
+- elb
+- migration_instance
+- template_instance
+- cloud
