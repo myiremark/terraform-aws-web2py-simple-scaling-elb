@@ -51,3 +51,23 @@ cd /terraform-aws-web2py-simple-scaling-elb/cloud/src/;
 terraform init;
 terraform apply;
 ```
+
+# Testing
+
+```
+LB_URL=OUTPUT_FROM_ABOVE_APPLY_IN_ELB_DIR;
+
+TESTING_ENDPOINT_NO_DB=welcome/default/date_time_only;
+TESTING_ENDPOINT_WRITE_DB=welcome/default/date_time;
+TESTING_ENDPOINT_READ_DB=welcome/default/date_time;
+
+TESTING_ENDPOINT=$TESTING_ENDPOINT_NO_DB;
+TESTING_ENDPOINT=$TESTING_ENDPOINT_READ_DB;
+TESTING_ENDPOINT=$TESTING_ENDPOINT_WRITE_DB;
+
+ab -n 5000 -c 20 $LB_URL/$TESTING_ENDPOINT;
+ab -n 10000 -c 100 $LB_URL/$TESTING_ENDPOINT;
+ab -n 40000 -c 200 $LB_URL/$TESTING_ENDPOINT;
+ab -n 100000 -c 1000 $LB_URL/$TESTING_ENDPOINT;
+```
+
