@@ -52,3 +52,35 @@ data "template_cloudinit_config" "migrationinstanceconfig" {
   }
 }
 
+data "template_cloudinit_config" "webapptemplateinstanceconfig" {
+  base64_encode = true
+  part {
+    content_type = "text/x-shellscript"
+    content      = "${data.template_file.userdataprereqs.template}"
+  }
+  part {
+    content_type = "text/x-shellscript"
+    content      = data.template_file.addsshkey.rendered
+  }
+  part {
+    content_type = "text/x-shellscript"
+    content      = "${file("${path.cwd}/../user_data/install-web2py.sh")}"
+  }
+  part {
+    content_type = "text/x-shellscript"
+    content      = "${file("${path.cwd}/../user_data/install-web2py-app.sh")}"
+  }
+  part {
+    content_type = "text/x-shellscript"
+    content      = data.template_file.dbconnectionstring.rendered
+  }
+  part {
+    content_type = "text/x-shellscript"
+    content      = "${file("${path.cwd}/../user_data/customize-web2py-app-for-template-instance.sh")}"
+  }
+  part {
+    content_type = "text/x-shellscript"
+    content      = "${file("${path.cwd}/../user_data/restart-services.sh")}"
+  }
+}
+
