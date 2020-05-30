@@ -77,9 +77,14 @@ variable "asg_max_size" {
   default     = 20
 }
 
+variable "asg_min_size" {
+  type        = number
+  description = "min number of vms in asg"
+  default     = 1
+}
+
 variable "app_ready_check_path" {
   type        = string
   description = "path to determine ec2 instance health"
   default     = "/welcome/default/date_time"
 }
-

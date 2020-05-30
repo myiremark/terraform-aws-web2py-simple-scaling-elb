@@ -2,7 +2,7 @@ resource "aws_autoscaling_group" "web" {
   availability_zones        = var.deployed_azs
   name                      = "web"
   max_size                  = var.asg_max_size
-  min_size                  = 1
+  min_size                  = var.asg_min_size
   desired_capacity          = 1
   health_check_grace_period = 300
   default_cooldown          = 60
@@ -22,4 +22,3 @@ resource "aws_autoscaling_attachment" "asg_attachment_web" {
   autoscaling_group_name = aws_autoscaling_group.web.id
   alb_target_group_arn   = aws_lb_target_group.lb-tg-web.arn
 }
-
