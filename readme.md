@@ -76,10 +76,10 @@ After signing up, you will need to follow [amazon's instructions about creating 
 ## Code Layout
 
 The repo has two folders containing docker files and source for:
-- terraform management container and terraform state files
-- load testing container
+- [terraform management container and terraform state files](cloud)
+- [load testing container](loadtest)
 
-Inside the [cloud](cloud) directory there are separate folders/states for:
+Inside the [cloud/src](cloud/src) directory there are separate folders/states for:
 - common files (data resources and variables)
   - variables (allow you to modify the resulting cloud)
   - user_data (allow you to modify the resulting application instances)

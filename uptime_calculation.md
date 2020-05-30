@@ -24,7 +24,7 @@ To achieve 99.99% uptime, that means the service can be down for 8s per day.  We
 
 ## Conclusion
 
-This would suggest setting the value of [asg_min_size](cloud/common/variables.tf) to 20 in order to achieve 99.99% uptime.
+This would suggest setting the value of [asg_min_size](cloud/src/common/variables.tf) to 20 in order to achieve 99.99% uptime.
 
 ## Caveats
 
