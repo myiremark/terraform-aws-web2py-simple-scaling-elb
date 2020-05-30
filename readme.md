@@ -21,6 +21,26 @@ Note: This repo does not use HTTPS and leaves SSH open as well as direct interne
 - 99.99% success rate @ 1k requests / sec sustained load
 - [99.99% uptime](uptime_calculation.md)
 
+## Goals - Service
+
+This is a trivial example of a service with 3 supported endpoints.
+
+```
+/date_time_only
+
+- calculates current ISO date and time
+- returns them as separate fields in a JSON object
+
+/date_time
+- calculates current ISO date and time
+- writes it to a postgres DB
+- returns them as separate fields in a JSON object
+
+/latest_date_time
+- retrieves latest written ISO date and time
+- returns them as separate fields in a JSON object
+```
+
 ## RESULTS
 
 ### RESULTS - Burst Capacity:
@@ -153,6 +173,8 @@ docker run --name=terraform_aws_webpy_loadtest -it myiremark/terraform_aws_web2p
 
 ### Inside the "terraform_aws_web2py_loadtest" container"
 
+For convenience purposes, you can also modify the endpoints below to remove the "welcome/default" portion.
+
 ```
 LB_URL=OUTPUT_FROM_ABOVE_APPLY_IN_ELB_DIR;
 
@@ -161,7 +183,13 @@ TESTING_ENDPOINT_WRITE_DB=welcome/default/date_time;
 TESTING_ENDPOINT_READ_DB=welcome/default/date_time;
 
 TESTING_ENDPOINT=$TESTING_ENDPOINT_NO_DB;
-TESTING_ENDPOINT=$TESTING_ENDPOINT_READ_DB;
+
+ab -n 5000 -c 20 $LB_URL/$TESTING_ENDPOINT;
+ab -n 25000 -c 100 $LB_URL/$TESTING_ENDPOINT;
+ab -n 40000 -c 200 $LB_URL/$TESTING_ENDPOINT;
+ab -n 40000 -c 200 $LB_URL/$TESTING_ENDPOINT; # triggers scale
+ab -n 100000 -c 1000 $LB_URL/$TESTING_ENDPOINT; # peak load testing
+
 TESTING_ENDPOINT=$TESTING_ENDPOINT_WRITE_DB;
 
 ab -n 5000 -c 20 $LB_URL/$TESTING_ENDPOINT;
@@ -169,6 +197,15 @@ ab -n 25000 -c 100 $LB_URL/$TESTING_ENDPOINT;
 ab -n 40000 -c 200 $LB_URL/$TESTING_ENDPOINT;
 ab -n 40000 -c 200 $LB_URL/$TESTING_ENDPOINT; # triggers scale
 ab -n 100000 -c 1000 $LB_URL/$TESTING_ENDPOINT; # peak load testing
+
+TESTING_ENDPOINT=$TESTING_ENDPOINT_READ_DB;
+
+ab -n 5000 -c 20 $LB_URL/$TESTING_ENDPOINT;
+ab -n 25000 -c 100 $LB_URL/$TESTING_ENDPOINT;
+ab -n 40000 -c 200 $LB_URL/$TESTING_ENDPOINT;
+ab -n 40000 -c 200 $LB_URL/$TESTING_ENDPOINT; # triggers scale
+ab -n 100000 -c 1000 $LB_URL/$TESTING_ENDPOINT; # peak load testing
+
 
 ```
 
