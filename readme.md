@@ -6,9 +6,11 @@
 
 [AWS](https://aws.amazon.com/) "provides on-demand cloud computing platforms and APIs to individuals, companies, and governments, on a metered pay-as-you-go basis".
 
+This repository is an attempt to create a sample terraform aws web2py application template that can be performant and modified easily by people new to both terraform and web2py.
+
 ## Goals - Approachability
 
-This repository is an attempt to create a sample terraform aws web2py application template that can be performant and modified easily by people new to both terraform and web2py.  It is also designed to stay as much as possible within the free tier of AWS resources.
+This repo is designed as an introduction to the concepts of Infrastructure as Code and python/web2py application deployment and scaling.  It is also designed to stay as much as possible within the free tier of AWS resources.
 
 Note: This repo does not use HTTPS and leaves SSH open as well as direct internet access to multiple instances.  This is not best practice and is NOT safe for a production environment.
 
