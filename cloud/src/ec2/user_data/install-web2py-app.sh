@@ -2,6 +2,19 @@
 
 sudo apt-get -y install python-psycopg2;
 
+routes_content="
+routes_in = (
+    ('/date_time', '/welcome/default/date_time'),
+    ('/date_time_only', '/welcome/default/date_time_only'),
+    ('/latest_date_time', '/welcome/default/latest_date_time')
+)
+routes_out = (
+    ('/welcome/default/date_time', '/date_time'),
+    ('/welcome/default/date_time_only', '/date_time_only'),
+    ('/welcome/default/latest_date_time', '/latest_date_time')
+)
+"
+
 model_content="
 # -*- coding: utf-8 -*-
 
@@ -22,6 +35,8 @@ db.define_table('dates_and_times',
 "
 
 controller_content="
+# -*- coding: utf-8 -*-
+
 def date_time_only():
     content = {'date':request.utcnow.date(),'time':request.utcnow.time()}
     return response.json(content)
@@ -33,11 +48,13 @@ def date_time():
 
 def latest_date_time():
     table = db.dates_and_times
-    return response.json(db(table.id>0).select(orderby=~table.id,limitby=(0,1)).first().date_and_time) 
+    return response.json(db(table.id>0).select(orderby=~table.id,limitby=(0,1)).first().date_and_time)
 "
 
 echo "$controller_content" > /home/www-data/web2py/applications/welcome/controllers/default.py
 
 echo "$model_content" > /home/www-data/web2py/applications/welcome/models/db.py
+
+echo "$routes_content" > /home/www-data/web2py/routes.py
 
 rm /home/www-data/web2py/applications/welcome/models/menu.py
