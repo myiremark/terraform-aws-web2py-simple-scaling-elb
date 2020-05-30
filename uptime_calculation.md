@@ -34,3 +34,9 @@ RDS is another single point of failure and its uptime calculation should be appr
 Postgres can be clustered in a reader/writer fashion across geographic regions and even service providers.
 
 Additionally, this service is dependent on AWS ELB and their upstream DNS as a single point of failure.  Cross cloud and multi region redundancies would improve availability.
+
+Scaling up expected capacity will also result in a required increase to the max number of connections available from postgres.
+
+Web2py specific application performance enhancements are documented at web2py.com and include database connection pooling, database connection load balancing, and response caching.
+
+At an middleware layer, uwsgi and nginx can both be configured further to allow further queuing of requests if necessary
