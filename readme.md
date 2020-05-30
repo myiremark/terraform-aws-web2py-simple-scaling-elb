@@ -23,13 +23,17 @@ Note: This repo does not use HTTPS and leaves SSH open as well as direct interne
 
 ## RESULTS
 
+### RESULTS - Burst Capacity:
+
 ```
-burst capacity:
   < 400 ms mean response time @ 3000 requests/sec
   < 100 ms mean response time @ 1000 requests/sec
   < 1% non 200 response rate
+```
 
-sustained capacity:
+### RESULTS - Sustained Capacity:
+
+```
   > 100 requests/sec
   < 400 ms response time (~200)
   < 1% non 200 response rate (0 @ 100 reqs/sec)

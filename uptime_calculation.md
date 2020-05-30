@@ -39,4 +39,4 @@ Scaling up expected capacity will also result in a required increase to the max 
 
 Web2py specific application performance enhancements are documented at web2py.com and include database connection pooling, database connection load balancing, and response caching.
 
-At an middleware layer, uwsgi and nginx can both be configured further to allow further queuing of requests if necessary
+At an middleware layer, uwsgi and nginx can both be configured further to allow further queuing of requests if necessary.
